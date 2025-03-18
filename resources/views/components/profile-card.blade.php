@@ -1,6 +1,6 @@
 <div class="col-sm-4">
     <div class="card">
-        <img class="card-img-top" src="https://picsum.photos/200/300?grayscale" alt="">
+        <img class="card-img-top" height="300vh" src="https://picsum.photos/200/300?grayscale" alt="">
         <div class="card-body">
             
             <h4 class="card-title">{{ $profile->name }}</h4>
