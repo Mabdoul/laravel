@@ -11,3 +11,4 @@ Route::get('/profiles/create', [ProfileController::class, 'create'])->name('prof
 Route::get('/profiles/{id}', [ProfileController::class, 'show'])->name('profiles.show');
 Route::post('/profiles/store', [ProfileController::class, 'store'])->name('store');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+

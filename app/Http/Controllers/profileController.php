@@ -23,22 +23,23 @@ class profileController extends Controller
         return view('profile.create');
     }
     public function store(Request $request){
-        $name = $request->name;
-        $email = $request->email;
-        $password = $request->password;
-        $bio = $request->bio;
+        // $name = $request->name;
+        // $email = $request->email;
+        // $password = $request->password;
+        // $bio = $request->bio;
         //validate
         $request->validate([
             'name'=>'required',
             
             ]);
             //insert
-            Profile::create([
-                'name'=>$name,
-                'email'=>$email,
-                'password'=>$password,
-                'bio'=>$bio,
-            ]) ;
-            return redirect()->route('profiles.index');
-           }
+            // Profile::create([
+            //     'name'=>$name,
+            //     'email'=>$email,
+            //     'password'=>$password,
+            //     'bio'=>$bio,
+            // ]) ;
+            Profile::create($request->post());
+            return redirect()->route('profiles.index')->with('success', 'Your account created successfully');
+        }
 }
