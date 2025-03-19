@@ -13,9 +13,12 @@ class profileController extends Controller
         $profiles = Profile::paginate(9);
         return view('profile.profiles',compact('profiles'));
     }
-    public function show(Request $request){
-        $id=(int)$request->id;
-        $profile = Profile::find($id);
+    // public function show(Request $request){
+    //     $id=(int)$request->id;
+    //     $profile = Profile::findOrfail($id);
+    //     return view('profile.show',compact('profile'));
+    // }
+    public function show(Profile $profile){
         return view('profile.show',compact('profile'));
     }
     public function create(){

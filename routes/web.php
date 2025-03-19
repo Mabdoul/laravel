@@ -6,9 +6,15 @@ use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
-Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profiles.create');
-Route::get('/profiles/{id}', [ProfileController::class, 'show'])->name('profiles.show');
-Route::post('/profiles/store', [ProfileController::class, 'store'])->name('store');
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
+Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
+
+Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profiles.create');
+
+Route::get('/profiles/{profile}', [ProfileController::class, 'show'])
+->where('profile', '\d+')
+->name('profiles.show');
+
+Route::post('/profiles/store', [ProfileController::class, 'store'])->name('store');
+
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
