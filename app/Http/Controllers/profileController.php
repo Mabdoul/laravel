@@ -40,6 +40,12 @@ class profileController extends Controller
             //     'bio'=>$bio,
             // ]) ;
             Profile::create($request->post());
+            //Redirections
+
+            //redirect('b url b7al /home')
+            //redirect()->route('....') wla hadi to_route('...') --->hadi a7sen tari9a
+            //redirect()->action(...)
+            //back()->withInput() retour en arriere
             return redirect()->route('profiles.index')->with('success', 'Your account created successfully');
         }
 }

@@ -6,9 +6,9 @@
     <li class="nav-item">
       <a class="nav-link" href={{ route('profiles.index') }}>Tous les Profile</a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href={{ route('settings.index') }}>Settings</a>
-    </li>
+    </li> --}}
     <li class="nav-item">
       <a class="nav-link" href={{ route('profiles.create') }}>Ajouter profile</a>
     </li>
