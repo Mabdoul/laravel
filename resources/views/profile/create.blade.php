@@ -2,6 +2,7 @@
     <h3>Ajouter Profile</h3>
     @if ($errors->any())
     <x-alert type="danger">
+      <h6>Errors:</h6>
       <ul>
       @foreach ($errors->all() as $error )
       <li>{{ $error }}</li>
@@ -32,9 +33,10 @@
       <div class="form-group">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" class="form-control">
-          @error('password')
-              <div class="text-danger">{{ $message }}</div>
-          @enderror
+      </div>
+      <div class="form-group">
+          <label for="password">Validate Password</label>
+          <input type="password" name="password_confirmation" id="password" class="form-control">
       </div>
       <div class="form-group">
           <label for="bio">Bio</label>
