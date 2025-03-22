@@ -55,4 +55,21 @@ class profileController extends Controller
         //back()->withInput() retour en arriere
         return redirect()->route('profiles.index')->with('success', 'Your account created successfully');
     }
+    public function destroy(Profile $profile)
+    {
+        $profile->delete();
+        return to_route('profiles.index')->with('success', 'Profile deleted successfully');
+    }
+    public function edit(Profile $profile)
+    {
+
+        return view('profile.edit', compact('profile'));
+    }
+    public function update(ProfileRequest $request,Profile $profile)
+    {
+        $formFields=$request->validated();
+        $profile->fill($formFields)
+        ->save();
+    return to_route('profiles.edit',$profile->id)->with('success','Profile Updated');
+    }
 }
