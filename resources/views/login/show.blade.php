@@ -1,18 +1,31 @@
 <x-master :title="'Se connecter'">
 
     <div class="container">
-        <form class="form">
+        <form method="POST" action="{{ route('login') }}" class="form">
+            @csrf
             <p class="form-title">Sign in to your account</p>
+    
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+    
             <div class="input-container">
-                <input placeholder="Enter email" type="email">
+                <input placeholder="Enter your email" type="text" name="email" value="{{ old('email') }}">
                 <span>
                     <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
                     </svg>
                 </span>
             </div>
+    
             <div class="input-container">
-                <input placeholder="Enter password" type="password">
+                <input placeholder="Enter password" type="password" name="password">
                 <span>
                     <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -20,15 +33,18 @@
                     </svg>
                 </span>
             </div>
+    
             <button class="submit" type="submit">
                 Sign in
             </button>
-
+    
             <p class="signup-link">
                 No account?
-                <a href="">Sign up</a>
+                <a href="{{ route('profiles.create') }}">Sign up</a>
             </p>
         </form>
+    </div>
+    
     </div>
 
     <style>
