@@ -68,6 +68,8 @@ class profileController extends Controller
     public function update(ProfileRequest $request,Profile $profile)
     {
         $formFields=$request->validated();
+        $formFields['password']=Hash::make($request->password);
+
         $profile->fill($formFields)
         ->save();
     return to_route('profiles.edit',$profile->id)->with('success','Profile Updated');

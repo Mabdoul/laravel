@@ -30,6 +30,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item active" href="{{ route('profiles.show', Auth::user()->id) }}">Your Profile</a></li>
+              <li><a class="dropdown-item active" href="{{ route('profiles.edit', Auth::user()->id) }}">edit</a></li>
               <li><a class="dropdown-item active" href="{{ route('login.logout') }}">Se deconnecter</a></li>
 
             </ul>

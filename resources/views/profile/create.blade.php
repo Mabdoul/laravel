@@ -6,15 +6,15 @@
       <ul>
       @foreach ($errors->all() as $error )
       <li>{{ $error }}</li>
-      
-        
+
+
       @endforeach
       </ul>
     </x-alert>
-   
-        
+
+
     @endif
-    <form action="{{ route('store') }}" method="POST">
+    <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
           <label for="name">Full Name</label>
@@ -45,8 +45,15 @@
               <div class="text-danger">{{ $message }}</div>
           @enderror
       </div>
+      <div class="form-group">
+          <label >Image</label>
+          <input type="file" name="image"  class="form-control">
+          @error('image')
+              <div class="text-danger">{{ $message }}</div>
+          @enderror
+      </div>
       <button type="submit" class="btn btn-primary">Ajouter</button>
   </form>
-  
+
 
 </x-master>
