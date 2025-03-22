@@ -11,6 +11,7 @@ Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profiles.create');
 

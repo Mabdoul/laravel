@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -11,6 +12,7 @@ class LoginController extends Controller
     {
         return view('login.show');
     }
+    
 
     public function login(Request $request)
     {
@@ -28,5 +30,11 @@ class LoginController extends Controller
                 'email' => 'Adresse email ou mot de passe incorrect',
             ])->onlyInput('email');
         }
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return to_route('login')->with('success','Deconnected');
     }
 }
