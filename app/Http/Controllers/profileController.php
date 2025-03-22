@@ -46,6 +46,8 @@ class profileController extends Controller
         //     'bio'=>$bio,
         // ]) ;
         $formFields['password']=Hash::make($request->password);
+        $formFields['image']=$request->file('image')->store('profile','public');
+
         Profile::create( $formFields);
         //Redirections
 
