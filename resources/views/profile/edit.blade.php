@@ -49,7 +49,7 @@
       </div>
       <div class="form-group">
         <label >Image</label>
-        <input type="file" name="image"  class="form-control" value="{{ old('image',$profile->image)  }}">
+        <input type="file" name="image"  class="form-control">
         @error('image')
             <div class="text-danger">{{ $message }}</div>
         @enderror

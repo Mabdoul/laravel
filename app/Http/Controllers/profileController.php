@@ -32,23 +32,18 @@ class profileController extends Controller
     }
     public function store(ProfileRequest $request)
     {
-        // $name = $request->name;
-        // $email = $request->email;
-        // $password = $request->password;
-        // $bio = $request->bio;
-        //validate
-        $formFields=$request->validated();
-        //insert
-        // Profile::create([
-        //     'name'=>$name,
-        //     'email'=>$email,
-        //     'password'=>$password,
-        //     'bio'=>$bio,
-        // ]) ;
-        $formFields['password']=Hash::make($request->password);
-        $formFields['image']=$request->file('image')->store('profile','public');
 
-        Profile::create( $formFields);
+        //validate
+
+        $formFields = $request->validated();
+        //insert
+
+        $formFields['password'] = Hash::make($request->password);
+        if($request->hasFile('image')){
+            $formFields['image'] = $this->uploadImage($request);
+        }
+
+        Profile::create($formFields);
         //Redirections
 
         //redirect('b url b7al /home')
@@ -67,13 +62,20 @@ class profileController extends Controller
 
         return view('profile.edit', compact('profile'));
     }
-    public function update(ProfileRequest $request,Profile $profile)
+    public function update(ProfileRequest $request, Profile $profile)
     {
-        $formFields=$request->validated();
-        $formFields['password']=Hash::make($request->password);
+        $formFields = $request->validated();
+        $formFields['password'] = Hash::make($request->password);
+        if($request->hasFile('image')){
+            $formFields['image'] = $this->uploadImage($request);
+        }
+
 
         $profile->fill($formFields)
-        ->save();
-    return to_route('profiles.edit',$profile->id)->with('success','Profile Updated');
+            ->save();
+        return to_route('profiles.edit', $profile->id)->with('success', 'Profile Updated');
+    }
+    private function uploadImage(ProfileRequest $request){
+        return $request->file('image')->store('profile', 'public');
     }
 }
