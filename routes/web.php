@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Authenticate;
 // Profils
 // Route::name('profiles.')->prefix('profiles')->group(function () {
 //     Route::controller(ProfileController::class)->group(function () {
@@ -23,8 +24,9 @@ Route::resource('profiles',ProfileController::class);
 
 
 // Accueil
-Route::get('/', [HomeController::class, 'index'])->name('homepage');
-
+Route::get('/', [HomeController::class, 'index'])
+    ->middleware(Authenticate::class)
+    ->name('homepage');
 // Authentification
 Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
