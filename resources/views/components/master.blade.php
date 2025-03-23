@@ -15,10 +15,10 @@
     <main>
         <div >
 
-            @include('partials.flashbag') 
+            @include('partials.flashbag')
         </div>
         <div class="container ">
-         
+
             {{ $slot }}
         </div>
 
