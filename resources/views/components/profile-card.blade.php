@@ -1,6 +1,6 @@
 <div class="col-sm-4">
     <div class="card m-2">
-        <img class="card-img-top" height="200vh" src="{{ asset('storage/'.$profile->image) }}" alt="">
+        <img class="card-img-top" height="350vh" src="{{ asset('storage/'.$profile->image) }}" alt="">
         <div class="card-body">
 
             <h4 class="card-title">{{ $profile->name }}</h4>
