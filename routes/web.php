@@ -35,3 +35,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 // Paramètres
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+Route::get('/google', function () {
+    return redirect()->away('https://www.google.com');
+});
