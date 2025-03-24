@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
-// Profils
+// Profilss
 // Route::name('profiles.')->prefix('profiles')->group(function () {
 //     Route::controller(ProfileController::class)->group(function () {
 //         Route::get('/', 'index')->name('index');
@@ -27,7 +27,7 @@ Route::resource('profiles',ProfileController::class);
 Route::get('/', [HomeController::class, 'index'])
     ->middleware(Authenticate::class)
     ->name('homepage');
-// Authentification
+//Authentification
 Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
