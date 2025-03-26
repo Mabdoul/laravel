@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
 use App\Services\Calcul;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Symfony\Component\Yaml\Inline;
 
 use function Laravel\Prompts\text;
 
@@ -53,3 +55,6 @@ Route::post('/form',function(Request $request){
     dd($request->input('input_field'));
 
 })->name('form');
+Route::get('/salam',function(){
+    return response()->download('storage/profile/images.png','profile.png',[],'inline');
+});
