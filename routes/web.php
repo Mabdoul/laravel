@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
@@ -26,6 +27,7 @@ use function Laravel\Prompts\text;
 //     });
 // });
 Route::resource('profiles',ProfileController::class);
+Route::resource('publications',PublicationController::class);
 
 
 

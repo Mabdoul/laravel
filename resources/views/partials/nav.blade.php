@@ -21,6 +21,9 @@
         <li class="nav-item">
             <a class="nav-link" href={{ route('profiles.create') }}>Ajouter profile</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href={{ route('publications.create') }}>Ajouter publication</a>
+        </li>
         @auth
 
 
