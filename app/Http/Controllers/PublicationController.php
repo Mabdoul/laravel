@@ -13,7 +13,8 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        //
+        $publications = Publication::latest()->paginate();
+        return view('publication.index',compact('publications'));
     }
 
     /**
@@ -34,7 +35,7 @@ class PublicationController extends Controller
             $formFields['image'] = $this->uploadImage($request);
         }
         Publication::create($formFields);
-        return to_route('publications.index');
+        return to_route('publications.index')->with('success','La publication est bien ajouter');;
 
     }
 
@@ -49,27 +50,37 @@ class PublicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Publication $publication)
+
     {
-        //
+
+        return view('publication.edit',compact('publication'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PublicationRequest $request, Publication $publication)
     {
-        //
+        $formFields=$request->validated();
+        if($request->hasFile('image')){
+            $formFields['image'] = $this->uploadImage($request);
+        };
+         $publication->fill($formFields)->save();
+        return to_route('publications.index')->with('success','La publication est bien modifier');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Publication $publication)
     {
-        //
+        $publication->delete();
+        return to_route('publications.index')->with('success','La publication ete supprimer');
+
     }
     private function uploadImage(PublicationRequest $request){
         return $request->file('image')->store('publication', 'public');
+
     }
 }

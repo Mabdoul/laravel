@@ -14,11 +14,12 @@
 
 
     @endif
-    <form action="{{ route('publications.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('publications.update',$publication->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT');
       <div class="form-group">
           <label for="name">Titre</label>
-          <input type="text" name="titre" id="name" class="form-control" value="{{ old('titre') }}">
+          <input type="text" name="titre" id="name" class="form-control" value="{{ old('titre',$publication->titre) }}">
           @error('titre')
               <div class="text-danger">{{ $message }}</div>
           @enderror
@@ -26,7 +27,7 @@
 
       <div class="form-group">
           <label for="body">body</label>
-          <textarea name="body" class="form-control">{{ old('body') }}</textarea>
+          <textarea name="body" class="form-control">{{ old('body',$publication->body) }}</textarea>
           @error('body')
               <div class="text-danger">{{ $message }}</div>
           @enderror
@@ -37,8 +38,11 @@
           @error('image')
               <div class="text-danger">{{ $message }}</div>
           @enderror
+          <div>
+            <img src="{{ asset('storage/'.$publication->image) }}" width="200px" height="200px" alt="">
+          </div>
       </div>
-      <button type="submit" class="btn btn-primary">Ajouter</button>
+      <button type="submit" class="btn btn-primary">Modifier</button>
   </form>
 
 
