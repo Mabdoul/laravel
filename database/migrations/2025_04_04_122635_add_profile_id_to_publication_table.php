@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('publication', function (Blueprint $table) {
-            //
+        Schema::table('publications', function (Blueprint $table) {
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
         });
     }
 
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('publication', function (Blueprint $table) {
-            //
+        Schema::table('publications', function (Blueprint $table) {
+            $table->dropColumn('profile_id');
         });
     }
 };
