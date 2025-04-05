@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PublicationRequest;
 use App\Models\Publication;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class PublicationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -30,10 +36,13 @@ class PublicationController extends Controller
      */
     public function store(PublicationRequest $request)
     {
-        $formFields=$request->validated();
-        if($request->hasFile('image')){
+        $formFields = $request->validated();
+
+        if ($request->hasFile('image')) {
             $formFields['image'] = $this->uploadImage($request);
         }
+        $formFields['profile_id']=Auth::id();
+
         Publication::create($formFields);
         return to_route('publications.index')->with('success','La publication est bien ajouter');;
 

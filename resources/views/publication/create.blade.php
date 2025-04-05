@@ -1,5 +1,6 @@
 <x-master title="Mon Profile" >
-    <h3>Ajouter Profile</h3>
+    <h3>Ajouter Publication
+    </h3>
     @if ($errors->any())
     <x-alert type="danger">
       <h6>Errors:</h6>
@@ -23,7 +24,7 @@
               <div class="text-danger">{{ $message }}</div>
           @enderror
       </div>
-     
+
       <div class="form-group">
           <label for="body">body</label>
           <textarea name="body" class="form-control">{{ old('body') }}</textarea>

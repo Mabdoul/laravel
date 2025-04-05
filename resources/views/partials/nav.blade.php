@@ -21,11 +21,11 @@
         <li class="nav-item">
             <a class="nav-link" href={{ route('profiles.create') }}>Ajouter profile</a>
         </li>
+
+        @auth
         <li class="nav-item">
             <a class="nav-link" href={{ route('publications.create') }}>Ajouter publication</a>
         </li>
-        @auth
-
 
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
