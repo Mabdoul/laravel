@@ -11,6 +11,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <h3>Publication</h3>
+            <div class="row">
+                @foreach ($profile->publications as $publication)
+                    <x-publication  :canUpdate=" auth()->user()->id===$publication->profile_id " :publication='$publication'/>
+                @endforeach
+            </div>
+        </div>
     </div>
 
  {{-- <br>

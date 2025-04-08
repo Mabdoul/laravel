@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Publication;
 
 class Profile extends Model
 {
@@ -15,6 +16,9 @@ class Profile extends Model
 
     public function getImageAttribute($value){
         return $value??'profile/images.png';
+    }
+    public function publications(){
+        return $this->hasMany(Publication::class); //recuprite publication
     }
 }
 
