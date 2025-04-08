@@ -7,6 +7,7 @@ use App\Models\Publication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class PublicationController extends Controller
 {
@@ -62,6 +63,8 @@ class PublicationController extends Controller
     public function edit(Publication $publication)
 
     {
+        Gate::authorize('update-publication',$publication);
+
 
         return view('publication.edit',compact('publication'));
     }
@@ -71,6 +74,9 @@ class PublicationController extends Controller
      */
     public function update(PublicationRequest $request, Publication $publication)
     {
+        Gate::authorize('update-publication',$publication);
+
+
         $formFields=$request->validated();
         if($request->hasFile('image')){
             $formFields['image'] = $this->uploadImage($request);

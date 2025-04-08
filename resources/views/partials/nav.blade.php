@@ -8,10 +8,6 @@
         </li>
         @endguest
 
-
-
-
-
         <li class="nav-item">
             <a class="nav-link" href={{ route('profiles.index') }}>Tous les Profile</a>
         </li>
@@ -25,6 +21,9 @@
         @auth
         <li class="nav-item">
             <a class="nav-link" href={{ route('publications.create') }}>Ajouter publication</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href={{ route('publications.index') }}>publication</a>
         </li>
 
         <div class="dropdown">
