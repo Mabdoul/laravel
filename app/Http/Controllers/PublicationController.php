@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PublicationController extends Controller
 {
+    use AuthorizesRequests; 
     public function __construct()
     {
         $this->middleware('auth')->except('index');
@@ -63,7 +65,7 @@ class PublicationController extends Controller
     public function edit(Publication $publication)
 
     {
-        Gate::authorize('update-publication',$publication);
+        $this->authorize('update',$publication);
 
 
         return view('publication.edit',compact('publication'));

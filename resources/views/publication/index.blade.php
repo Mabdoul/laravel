@@ -3,7 +3,7 @@
     <div class="container w-50 mx-auto ">
         <div class="row">
             @foreach ($publications as $publication)
-                <x-publication  :canUpdate=" auth()->user()->id===$publication->profile_id " :publication='$publication'/>
+                <x-publication  :publication='$publication'/>
             @endforeach
         </div>
     </div>
