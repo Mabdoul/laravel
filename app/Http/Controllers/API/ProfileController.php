@@ -29,7 +29,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+       return $profile;
     }
 
     /**
@@ -45,6 +45,7 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        //
+        $profile->delete();
+        return response()->json('suprimer');
     }
 }
